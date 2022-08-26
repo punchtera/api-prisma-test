@@ -1,0 +1,21 @@
+{
+  "name": "api-prisma-test",
+  "version": "1.0.0",
+  "description": "A template based on prisma.io orm using typescript",
+  "main": "src/app.ts",
+  "scripts": {
+    "start:db": "docker-compose up",
+    "stop:db": "docker-compose down"
+  },
+  "author": "punchtera",
+  "license": "ISC",
+  "dependencies": {
+    "docker-compose": "^0.23.17"
+  },
+  "devDependencies": {
+    "@types/node": "^18.7.13",
+    "nodemon": "^2.0.19",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.2"
+  }
+}
