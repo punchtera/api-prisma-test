@@ -20,14 +20,10 @@ async function main() {
         return { userName: smd.userName, url: smd.url, profileId };
     });
 
-    const aggregateProgrammingLanguagesDataData = programmingLanguagesData.map((pld) => {
-        const profileId = profiles.find((profile) =>
-            pld.programmerFirstNames.indexOf(profile.firstName) !== -1)?.id || 0;
-        return { name: pld.name, profileId };
-    });
-
     await prisma.socialMedia.createMany({ data: aggregateSocialMediaData });
-    await prisma.programmingLanguage.createMany({ data: aggregateProgrammingLanguagesDataData });
+
+    const formatterProgrammingLanguages = programmingLanguagesData.map((pl) => ({ name: pl.name }));
+    await prisma.programmingLanguage.createMany({ data: formatterProgrammingLanguages });
 }
 
 main()

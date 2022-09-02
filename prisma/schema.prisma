@@ -11,15 +11,14 @@ datasource db {
 }
 
 model Profile {
-  id                             Int                             @id @default(autoincrement())
-  firstName                      String                          @unique
-  lastName                       String?
-  phoneNumber                    BigInt?
-  title                          String
-  email                          String
-  socialMedia                    SocialMedia[]
-  programmingLanguagesOnProfiles ProgrammingLanguage[]
-  ProgrammingLanguagesOnProfile  ProgrammingLanguagesOnProfile[]
+  id                            Int                             @id @default(autoincrement())
+  firstName                     String                          @unique
+  lastName                      String?
+  phoneNumber                   BigInt?
+  title                         String
+  email                         String
+  socialMedia                   SocialMedia[]
+  programmingLanguagesOnProfile ProgrammingLanguagesOnProfile[]
 }
 
 model SocialMedia {
@@ -33,9 +32,7 @@ model SocialMedia {
 model ProgrammingLanguage {
   id                            Int                             @id @default(autoincrement())
   name                          String
-  profile                       Profile                         @relation(fields: [profileId], references: [id])
-  profileId                     Int
-  ProgrammingLanguagesOnProfile ProgrammingLanguagesOnProfile[]
+  programmingLanguagesOnProfile ProgrammingLanguagesOnProfile[]
 }
 
 model ProgrammingLanguagesOnProfile {
