@@ -12,3 +12,7 @@ This is a basic layout for creating an api using prisma orm and typescript.
 - execute `docker inspect {postgres_container_id} | grep IPAddress`.
 - set the IPAddress in the host value || set the host value as the container_name from the docker-compose.yml file
     e.g `pg_container`.
+
+- run `npx prisma migrate dev --name init` to create a migration.
+- run `npx prisma db seed` to run a seed manually (this will execute the seed command inside the package.json defined within prisma key).
+- if one runs `npx prisma migrate dev` or `npx prisma migrate reset` will result in automatic seeding.

@@ -8,6 +8,9 @@
     "start:db": "docker-compose up",
     "stop:db": "docker-compose down"
   },
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  },  
   "author": "punchtera",
   "license": "ISC",
   "dependencies": {
