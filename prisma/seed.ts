@@ -1,51 +1,33 @@
-import profiles from './data/profiles';
+import profilesData from './data/profiles';
+import socialMediaData from './data/socialMedia';
+import programmingLanguagesData from './data/programmingLanguages';
 
 import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 async function main() {
 
-    await prisma.profile.createMany({ data: profiles });
+    await prisma.profile.createMany({ data: profilesData });
+    const profiles = await prisma.profile.findMany({
+        select: {
+            firstName: true,
+            id: true
+        }
+    });
 
-    // const alice = await prisma.user.upsert({
-    //     where: { email: 'alice@prisma.io' },
-    //     update: {},
-    //     create: {
-    //         email: 'alice@prisma.io',
-    //         name: 'Alice',
-    //         posts: {
-    //             create: {
-    //                 title: 'Check out Prisma with Next.js',
-    //                 content: 'https://www.prisma.io/nextjs',
-    //                 published: true,
-    //             },
-    //         },
-    //     },
-    // });
+    const aggregateSocialMediaData = socialMediaData.map((smd) => {
+        const profileId = profiles.find((profile) => profile.firstName === smd.firstName)?.id || 0;
+        return { userName: smd.userName, url: smd.url, profileId };
+    });
 
-    // const bob = await prisma.user.upsert({
-    //     where: { email: 'bob@prisma.io' },
-    //     update: {},
-    //     create: {
-    //         email: 'bob@prisma.io',
-    //         name: 'Bob',
-    //         posts: {
-    //             create: [
-    //                 {
-    //                     title: 'Follow Prisma on Twitter',
-    //                     content: 'https://twitter.com/prisma',
-    //                     published: true,
-    //                 },
-    //                 {
-    //                     title: 'Follow Nexus on Twitter',
-    //                     content: 'https://twitter.com/nexusgql',
-    //                     published: true,
-    //                 },
-    //             ],
-    //         },
-    //     },
-    // });
-    // console.log({ alice, bob });
+    const aggregateProgrammingLanguagesDataData = programmingLanguagesData.map((pld) => {
+        const profileId = profiles.find((profile) =>
+            pld.programmerFirstNames.indexOf(profile.firstName) !== -1)?.id || 0;
+        return { name: pld.name, profileId };
+    });
+
+    await prisma.socialMedia.createMany({ data: aggregateSocialMediaData });
+    await prisma.programmingLanguage.createMany({ data: aggregateProgrammingLanguagesDataData });
 }
 
 main()
