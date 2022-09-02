@@ -4,6 +4,7 @@
   "description": "A template based on prisma.io orm using typescript",
   "main": "src/app.ts",
   "scripts": {
+    "start:dev": "nodemon src/server.ts",
     "start:db": "docker-compose up",
     "stop:db": "docker-compose down"
   },
@@ -11,10 +12,12 @@
   "license": "ISC",
   "dependencies": {
     "@prisma/client": "^4.2.1",
-    "docker-compose": "^0.23.17"
+    "@types/express": "^4.17.13",
+    "docker-compose": "^0.23.17",
+    "express": "^4.18.1"
   },
   "devDependencies": {
-    "@types/node": "^18.7.13",
+    "@types/node": "^18.7.14",
     "nodemon": "^2.0.19",
     "prisma": "^4.2.1",
     "ts-node": "^10.9.1",
