@@ -1,10 +1,10 @@
 let programmingLanguages = [
-    { programmerFirstNames: ["Juan"], name: "Javascript" },
-    { programmerFirstNames: ["Juan"], name: "Typescript" },
-    { programmerFirstNames: ["Juan"], name: "Golang" },
-    { programmerFirstNames: ["Juan"], name: "C#" },
-    { programmerFirstNames: ["Juan"], name: "Python" },
-    { programmerFirstNames: ["Juan"], name: "Css" },
+    { programmersFirstName: ["Juan"], name: "Javascript" },
+    { programmersFirstName: ["Juan"], name: "Typescript" },
+    { programmersFirstName: ["Juan"], name: "Golang" },
+    { programmersFirstName: ["Juan"], name: "C#" },
+    { programmersFirstName: ["Juan"], name: "Python" },
+    { programmersFirstName: ["Juan"], name: "Css" },
 ];
 
 export default programmingLanguages;
