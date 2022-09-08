@@ -4,7 +4,7 @@ let programmingLanguages = [
     { programmersFirstName: ["Juan"], name: "Golang" },
     { programmersFirstName: ["Juan"], name: "C#" },
     { programmersFirstName: ["Juan"], name: "Python" },
-    { programmersFirstName: ["Juan"], name: "Css" },
+    { programmersFirstName: ["Juan", "Lina"], name: "Css" },
 ];
 
 export default programmingLanguages;
