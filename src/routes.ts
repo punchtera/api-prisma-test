@@ -14,9 +14,13 @@ routes.get('/', async (_req, res) => {
             }
         });
 
-    console.log('profileResult', profileResult);
-    console.log('profileResult[0].programmingLanguages', profileResult[0].programmingLanguages);
-    // console.log(JSON.stringify(profileResult));
+    // step necessary to filter the response    
+    const viewModelResponse = profileResult.map(profile => {
+        return { ...profile, programmingLanguages: profile.programmingLanguages.map(programmingLanguage => programmingLanguage.programmingLanguage) };
+    });
+
+    console.log('viewModelResponse', viewModelResponse);
+
     return res.json({ message: "Helloworld" });
 });
 
